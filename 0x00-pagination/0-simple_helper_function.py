@@ -3,8 +3,12 @@
 0. Simple helper function
 """
 
+import csv
+import math
+from typing import List, Tuple
 
-def index_range(page: int, page_size: int) -> tuple:
+
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     index_range that takes two integer arguments
     page and page_size.
