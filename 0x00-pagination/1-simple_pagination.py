@@ -56,21 +56,13 @@ class Server:
 
         return self.__dataset
 
-      def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+    def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """Retrieves a page of data.
         """
-        takes two integer arguments page with default
-        value 1 and page_size with default value 10.
-        return the appropriate page of the dataset 
-        """
-        # check the type of the page and page_size
         assert type(page) == int and type(page_size) == int
-        # check if the page, page_size > 0
         assert page > 0 and page_size > 0
-        # get the start and end index
         start, end = index_range(page, page_size)
-        # Get the data
         data = self.dataset()
-        # check if the start out of the length
         if start > len(data):
             return []
         return data[start:end]
