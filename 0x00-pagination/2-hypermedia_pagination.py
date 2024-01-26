@@ -53,7 +53,7 @@ class Server:
         start, end = index_range(page, page_size)
         page_len = end - start
         current_page = end - start - 1
-        total_pages = end - start + 1
+        total_pages = end + start + 1
         data = self.dataset()
         page_data = data[start: end]
         if not end + 1:
