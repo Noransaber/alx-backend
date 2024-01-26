@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Task 1: Simple pagination.
+"""Task 2: Hypermedia pagination
 """
 
 import csv
 import math
-from typing import List, Tuple, Dict
+from typing import Dict, List, Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -36,30 +36,25 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Retrieves a page of data.
         """
-        assert isinstance(page, int) and isinstance(page_size, int)
+        assert type(page) == int and type(page_size) == int
         assert page > 0 and page_size > 0
         start, end = index_range(page, page_size)
         data = self.dataset()
         if start > len(data):
             return []
         return data[start:end]
-    
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
+        """Retrieves information about a page.
         """
-        get_hyper method that takes the same arguments
-        (and defaults) as get_page and returns a dictionary
-        """
-        # calculate the start and the end of the page by index_range method
+        data = self.get_page(page, page_size)
         start, end = index_range(page, page_size)
-        page_len = end - start
-        current_page = end - start - 1
-        total_pages = end + start + 1
-        data = self.dataset()
-        page_data = data[start: end]
-        if not end + 1:
-            return None
-        next_page = end + 1
-        if not start - 1:
-            return None
-        prev_page = start - 1
-        return {'page_size': page_len, 'page': current_page, 'data': page_data, 'next_page': next_page, 'prev_page': prev_page, 'total_pages': total_pages}
+        total_pages = math.ceil(len(self.__dataset) / page_size)
+        return {
+            'page_size': len(data),
+            'page': page,
+            'data': data,
+            'next_page': page + 1 if end < len(self.__dataset) else None,
+            'prev_page': page - 1 if start > 0 else None,
+            'total_pages': total_pages
+        }
