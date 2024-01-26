@@ -52,7 +52,7 @@ class Server:
         # calculate the start and the end of the page by index_range method
         start, end = index_range(page, page_size)
         page_len = end - start
-        current_page = end - start
+        current_page = end - start - 1
         total_pages = end - start + 1
         data = self.dataset()
         page_data = data[start: end]
@@ -63,7 +63,3 @@ class Server:
             return None
         prev_page = start - 1
         return {'page_size': page_len, 'page': current_page, 'data': page_data, 'next_page': next_page, 'prev_page': prev_page, 'total_pages': total_pages}
-
-
-# {'page_size': 0, 'page': 3000, 'data': [], 'next_page': None, 'prev_page': 2999, 'total_pages': 195}
-        
