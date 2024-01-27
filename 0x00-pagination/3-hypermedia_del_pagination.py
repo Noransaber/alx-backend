@@ -32,32 +32,6 @@ class Server:
             self.__dataset = dataset[1:]
 
         return self.__dataset
-    def indexed_dataset(self) -> Dict[int, List]:
-        
-It looks like the Server class does not have a method called indexed_dataset, and that's causing the AttributeError in your main file when calling server.indexed_dataset().
-
-To fix this issue, you should add the indexed_dataset method to the Server class in your second script (3-hypermedia_del_pagination.py). You can create the indexed_dataset method by modifying the existing dataset method to return a dictionary with indices as keys. Here's the modified Server class:
-
-python
-Copy code
-class Server:
-    """Server class to paginate a database of popular baby names.
-    """
-    DATA_FILE = "Popular_Baby_Names.csv"
-
-    def __init__(self):
-        self.__dataset = None
-
-    def dataset(self) -> List[List]:
-        """Cached dataset
-        """
-        if self.__dataset is None:
-            with open(self.DATA_FILE) as f:
-                reader = csv.reader(f)
-                dataset = [row for row in reader]
-            self.__dataset = dataset[1:]
-
-        return self.__dataset
 
     def indexed_dataset(self) -> Dict[int, List]:
         """Returns the dataset with indices as keys.
