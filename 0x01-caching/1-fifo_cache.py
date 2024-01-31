@@ -27,3 +27,7 @@ class FIFOCache(BaseCaching):
                 discarded_key = list(self.cache_data)[0]
                 self.cache_data.pop(discarded_key)
                 print("DISCARD: " + str(discarded_key))
+    def get(self, key):
+        """
+        return the value in self.cache_data linked to key."""
+        return self.cache_data.get(key, None)
