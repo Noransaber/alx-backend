@@ -1,4 +1,4 @@
-  #!/usr/bin/env python3
+#!/usr/bin/env python3
 """Task 5: Least Frequently Used caching module.
 """
 from collections import OrderedDict
@@ -11,6 +11,7 @@ class LFUCache(BaseCaching):
     retrieving items from a dictionary with a LFU
     removal mechanism when the limit is reached.
     """
+
     def __init__(self):
         """Initializes the cache.
         """
