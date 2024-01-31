@@ -3,6 +3,7 @@
 '''
 
 
+from collections import OrderedDict
 from base_caching import BaseCaching
 
 
@@ -15,6 +16,7 @@ class LRUCache(BaseCaching):
         '''initialize the cache
         '''
         super().__init__()
+        self.cache_data = OrderedDict()
 
     def put(self, key, item):
         """Adds an item in the cache.
