@@ -1,7 +1,11 @@
-#!/usr/bin/python3
-""" 0. Basic dictionary """
+#!/usr/bin/env python3
 
-BaseCaching  = __import__( 'BaseCaching' ).BaseCaching
+'''Task 0: Basic dictionary
+'''
+
+
+from base_caching import BaseCaching
+
 
 class BasicCache(BaseCaching):
     """
