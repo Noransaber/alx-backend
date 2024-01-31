@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-'''Task 0: Basic dictionary
+'''Task 2. LIFO Caching
 '''
 
 from base_caching import BaseCaching
