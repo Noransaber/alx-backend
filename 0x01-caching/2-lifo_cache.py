@@ -21,12 +21,11 @@ class LIFOCache (BaseCaching):
         LIFOCache.put(key, item) -> None"""
         if key is not None or item is not None:
             self.cache_data[key] = item
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            discarded_key = list(self.cache_data)[0]
-            self.cache_data.pop(discarded_key)
+        if len(self.cache_data) + 1 > BaseCaching.MAX_ITEMS:
+            last_key, _ = self.cache_data.popitem(True)
+            print("DISCARD: " last_key)
+            self.cache_data[key] = item
             self.cache_data.move_to_end(key, last=True)
-            print("DISCARD:" + str(discarded_key))
-
 
 def get(self, key):
     """
