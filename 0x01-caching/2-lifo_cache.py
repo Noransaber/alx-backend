@@ -31,9 +31,3 @@ def get(self, key):
     """
     LIFOCache.get(key) -> item"""
     return self.cache_data.get(key)
-
-
-my_cache.put("F", "Mission")
-my_cache.print_cache()
-my_cache.put("G", "San Francisco")
-my_cache.print_cache()
